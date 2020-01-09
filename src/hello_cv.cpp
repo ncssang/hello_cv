@@ -11,7 +11,7 @@
 
 int get_sign_angle(cv::Point point_1, cv::Point point_0, cv::Point point_2)
 {
-    // dau cua goc point1 point2 point3
+    // dau cua goc point1 point0 point2
     cv::Point v_p0_p1;
     v_p0_p1.x = point_1.x - point_0.x;
     v_p0_p1.y = point_1.y - point_0.y;
@@ -33,18 +33,19 @@ int get_sign_angle(cv::Point point_1, cv::Point point_0, cv::Point point_2)
 
 int main()
 {
-
+    // Khai bao bien.
     std::vector<cv::Point> points;
-    for (size_t i = 0; i < 5; ++i)
+    for (size_t i = 0; i < 15; ++i)
     {
-        points.push_back(cv::Point(100 + rand() % 400, 100 + rand() % 200));
+        points.push_back(cv::Point(100 + rand() % 400, 100 + rand() % 200)); //tim cac so >100, <500 ngau nhien. so luong tim kiemm nho hon i.
     }
     for (size_t i = 0; i < points.size(); ++i)
     {
-        std::cout << i << ": " << points[i] << std::endl;
+        std::cout << i << ": " << points[i] << std::endl; //Hien ra man hinh cac so ngau nhien vua tim.
     }
-
+    //Khai bao bien.
     std::vector<cv::Point> convex_hulls;
+    //Tim gia tri co  x nho nhat trong day so ngau nhien..
     cv::Point min_x_point = points[0];
     for (size_t i = 0; i < points.size(); ++i)
     {
@@ -53,15 +54,12 @@ int main()
             min_x_point = points[i];
         }
     }
-    std::cout << min_x_point << std::endl;
-    convex_hulls.push_back(min_x_point);
+    convex_hulls.push_back(min_x_point); //Day gia  tri min_x_point vao convex_hull.
 
     while (true)
     {
         cv::Point latest_peak = convex_hulls[convex_hulls.size() - 1];
-        // std::cout << " latest_peak: " << latest_peak << std::endl;
-
-        cv::Point next_peak(50, 50);
+        cv::Point next_peak;
         bool is_next_point_existing = false;
         for (size_t i = 0; i < points.size(); ++i)
         {
@@ -69,19 +67,19 @@ int main()
             bool get_sign_convex_hulls = true;
             for (size_t j = 0; j < convex_hulls.size(); ++j)
             {
-                if (current_point.x == convex_hulls[j].x && current_point.y == convex_hulls[j].y)
+                if (current_point.x == convex_hulls[j].x && current_point.y == convex_hulls[j].y) //xet diem hien tai va cac diem trong convex_hull. loai bo cac diem da xet truoc do.
                 {
                     get_sign_convex_hulls = false;
                     break;
                 }
             }
-            if (get_sign_convex_hulls == true)
+            if (get_sign_convex_hulls == true) //Neu diem hien tai khac cac diem da xet truoc do.
             {
                 std::cout << i << " " << current_point << std::endl;
                 bool is_next_peak = true;
                 for (size_t j = 0; j < points.size(); ++j)
                 {
-                    if (get_sign_angle(current_point, latest_peak, points[j]) > 0)
+                    if (get_sign_angle(current_point, latest_peak, points[j]) > 0) //Xet dau. Tim cac diem thoa man yeu cau(so sanh voi current_point)
                     {
                         is_next_peak = false;
                         break;
@@ -90,15 +88,15 @@ int main()
                 if (is_next_peak == true)
                 {
                     is_next_point_existing = true;
-                    next_peak = current_point;
+                    next_peak = current_point; //Neu thoa man thi gan next_peak = current_point.
                 }
             }
         }
-        if (is_next_point_existing)
+        if (is_next_point_existing) //Chay truong trinh trong khi ton tai diem tiep theo. neu khong ton tai thi dung chuong trinh.
         {
-            convex_hulls.push_back(next_peak);
+            convex_hulls.push_back(next_peak); //Day tat cac cac gia tri thoa man vao convex_hull
         }
-        else
+        else //Neu khong con diem nao de xet thi dung lai.
         {
             break;
         }
@@ -107,9 +105,9 @@ int main()
 
     for (size_t i = 0; i < convex_hulls.size(); ++i)
     {
-        std::cout << i << ": " << convex_hulls[i] << std::endl;
+        std::cout << i << ": " << convex_hulls[i] << std::endl; //Hien ra man hinh tat ca gia tri trong convex_hull.
     }
-
+    //Ve hinh
     cv::Mat image = cv::Mat::zeros(cv::Size(600, 400), CV_8UC3);
     for (size_t i = 0; i < points.size(); ++i)
     {
@@ -120,7 +118,7 @@ int main()
         cv::line(image, convex_hulls[i], convex_hulls[i + 1], 255, 1, 8);
     }
     cv::line(image, convex_hulls[0], convex_hulls[convex_hulls.size() - 1], 255, 1, 8);
-
+    cv::flip(image, image, 0);
     cv::imshow("image", image);
     cv::waitKey();
 

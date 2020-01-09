@@ -18,6 +18,11 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 
 ## Declare a C++ executable
 add_executable(hello_cv src/hello_cv.cpp)
+add_executable(lowest_common_multiple src/lowest_common_multiple.cpp)
+add_executable(reduction_of_a_fraction src/reduction_of_a_fraction.cpp)
+add_executable(rotate_point_around_origin src/rotate_point_around_origin src/geometry.cpp)
+
+
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(hello_cv ${OpenCV_LIBS})
