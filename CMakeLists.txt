@@ -23,6 +23,7 @@ add_executable(reduction_of_a_fraction src/reduction_of_a_fraction.cpp)
 add_executable(rotate_point_around_origin src/rotate_point_around_origin src/geometry.cpp)
 add_executable(line_is_symmetrical_through_the_line src/line_is_symmetrical_through_the_line.cpp src/geometry.cpp)
 add_executable(intersection_of_bisector src/intersection_of_bisector.cpp src/geometry.cpp)
+add_executable(binary_search src/binary_search.cpp)
 
 
 
