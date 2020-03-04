@@ -25,6 +25,11 @@ add_executable(line_is_symmetrical_through_the_line src/line_is_symmetrical_thro
 add_executable(intersection_of_bisector src/intersection_of_bisector.cpp src/geometry.cpp)
 add_executable(binary_search src/binary_search.cpp)
 add_executable(backtracking src/backtracking.cpp)
+add_executable(sum_square src/sum_square.cpp)
+add_executable(multiplication_scalar src/multiplication_scalar.cpp)
+add_executable(student_score src/student_score.cpp)
+add_executable(product src/product.cpp)
+add_executable(random_frequency src/random_frequency.cpp)
 
 
 

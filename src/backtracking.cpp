@@ -16,7 +16,7 @@ public:
 
 int main()
 {
-    Queen queen(15);
+    Queen queen(8);
     queen.backtrack(0);
     return 0;
 }
@@ -58,7 +58,10 @@ void Queen::backtrack(int i)
             {
                 print_result();
             }
-            backtrack(i + 1);
+            else
+            {
+                backtrack(i + 1);
+            }
         }
     }
 }
