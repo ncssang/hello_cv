@@ -30,6 +30,7 @@ add_executable(multiplication_scalar src/multiplication_scalar.cpp)
 add_executable(student_score src/student_score.cpp)
 add_executable(product src/product.cpp)
 add_executable(random_frequency src/random_frequency.cpp)
+add_executable(exponential src/exponential.cpp)
 
 
 
