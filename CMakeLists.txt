@@ -32,6 +32,7 @@ add_executable(product src/product.cpp)
 add_executable(random_frequency src/random_frequency.cpp)
 add_executable(exponential src/exponential.cpp)
 add_executable(hanoitower src/hanoitower.cpp)
+add_executable(knight_s_tour src/knight_s_tour.cpp)
 
 
 
