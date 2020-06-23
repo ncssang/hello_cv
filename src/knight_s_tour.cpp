@@ -67,7 +67,7 @@ void Knight::xuat()
         {
             for (int j = 0; j < size; j++)
             {
-                printf("%5d ", path[i][j]);
+                std::cout << path[i][j] << "\t";
             }
             std::cout << endl;
         }
