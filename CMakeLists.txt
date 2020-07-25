@@ -35,7 +35,7 @@ add_executable(hanoitower src/hanoitower.cpp)
 add_executable(knight_s_tour src/knight_s_tour.cpp)
 add_executable(workes src/workes.cpp)
 add_executable(matrix src/matrix.cpp)
-
+add_executable(cubic_equation src/cubic_equation.cpp)
 
 
 
